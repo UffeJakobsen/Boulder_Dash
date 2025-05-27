@@ -1,7 +1,8 @@
-#include "BD_basis.h"
 
 #ifndef BD_animation
 #define BD_animation
+
+#include "BD_basis.h"
 
 void Game_Intro(Game *g);
 void Game_Final(Game *g, int situation);

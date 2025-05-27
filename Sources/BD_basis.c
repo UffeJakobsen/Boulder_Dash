@@ -1,5 +1,42 @@
 #include "BD_basis.h"
 
+//
+//
+//
+
+SDL_Window *win;
+SDL_Renderer *renderer;
+SDL_Event event;
+TTF_Font *font;
+
+SDL_Texture *textures;
+SDL_Texture *introTex;
+SDL_Texture *howtoTex;
+SDL_Texture *finalTex;
+SDL_Texture *minerTex;
+SDL_Texture *panelTex;
+
+Mix_Music *cur_music;
+Mix_Music *boulder_world_music;
+Mix_Music *ice_world_music;
+Mix_Music *ocean_world_music;
+Mix_Music *relic_world_music;
+Mix_Music *sand_world_music;
+Mix_Music *volcanic_world_music;
+Mix_Music *ending_music;
+
+Mix_Chunk *collectDiamondEffect;
+Mix_Chunk *moveEarthEffect;
+Mix_Chunk *moveSpaceEffect;
+Mix_Chunk *rockEffect;
+Mix_Chunk *bonusScoreEffect;
+Mix_Chunk *levelUpEffect;
+
+
+//
+//
+//
+
 bool SDL_Initialization()
 {
 	Uint32 renderer_flag = SDL_RENDERER_ACCELERATED|SDL_RENDERER_PRESENTVSYNC;
@@ -21,7 +58,7 @@ bool SDL_Initialization()
 		printf("Error! TTF Initializing : %s\n",TTF_GetError());
 		return false;
 	}
-	
+
 	win = SDL_CreateWindow("Boulder Dash",SDL_WINDOWPOS_CENTERED,SDL_WINDOWPOS_CENTERED,WINDOW_WIDTH,WINDOW_HEIGHT,0);
 	if(!win)
 	{
@@ -174,14 +211,14 @@ void Set_Object(Game *g, Objects *cur_obj, Object name, int level)
 			break;
 		case MONSTER:
 			cur_obj->cropRect.x = 16*9;
-			break;					
+			break;
 		case WATER:
 			cur_obj->cropRect.x = 16*7;
 			break;
 		case DOOR:
 			cur_obj->state = PASSIVE;
 			cur_obj->cropRect.x = 16*6;
-			break;	
+			break;
 	}
 }
 
@@ -224,7 +261,7 @@ bool Import_Levels(Game *g)
 	{
 		while(str_cmp(buffer,"#level#\n") != 0)
 			fgets(buffer,255,fp);
-		
+
 		fscanf(fp,"%s%d",buffer,&iter_level->id);
 		fscanf(fp,"%s%d",buffer,&iter_level->row);
 		fscanf(fp,"%s%d",buffer,&iter_level->column);
@@ -256,7 +293,7 @@ bool Import_Levels(Game *g)
 			fgets(buffer,255,fp);
 
 		if(!feof(fp))
-		{	
+		{
 			iter_level->next = (Level*)malloc(sizeof(Level));
 			iter_level = iter_level->next;
 			iter_level->next = NULL;

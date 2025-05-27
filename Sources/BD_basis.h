@@ -1,3 +1,7 @@
+
+#ifndef BD_basis
+#define BD_basis
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -7,9 +11,6 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_ttf.h>
-
-#ifndef BD_basis
-#define BD_basis
 
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 760
@@ -29,7 +30,7 @@
 #define TTF_FILE_PATH "TTFs"
 #define LEVEL_FILE_PATH "Level"
 
-typedef enum{false,true}bool;
+//typedef enum{false,true}bool;
 typedef enum{EMPTY=' ',MINER='p',EARTH='.',BORDER='|',ROCK='o',DIAMOND='*',SPIDER='c',MONSTER='e',WATER='x',DOOR='g'}Object;
 typedef enum{PASSIVE,ACTIVE,ROLL,PAUSE,CONTINUE,LEVELUP,LEVELAGAIN,FINISH,CHEAT}State;
 
@@ -94,33 +95,33 @@ typedef struct
 	SDL_Texture *tex;
 }Game;
 
-SDL_Window *win;
-SDL_Renderer *renderer;
-SDL_Event event;
-TTF_Font *font;
+extern SDL_Window *win;
+extern SDL_Renderer *renderer;
+extern SDL_Event event;
+extern TTF_Font *font;
 
-SDL_Texture *textures;
-SDL_Texture *introTex;
-SDL_Texture *howtoTex;
-SDL_Texture *finalTex;
-SDL_Texture *minerTex;
-SDL_Texture *panelTex;
+extern SDL_Texture *textures;
+extern SDL_Texture *introTex;
+extern SDL_Texture *howtoTex;
+extern SDL_Texture *finalTex;
+extern SDL_Texture *minerTex;
+extern SDL_Texture *panelTex;
 
-Mix_Music *cur_music;
-Mix_Music *boulder_world_music;
-Mix_Music *ice_world_music;
-Mix_Music *ocean_world_music;
-Mix_Music *relic_world_music;
-Mix_Music *sand_world_music;
-Mix_Music *volcanic_world_music;
-Mix_Music *ending_music;
+extern Mix_Music *cur_music;
+extern Mix_Music *boulder_world_music;
+extern Mix_Music *ice_world_music;
+extern Mix_Music *ocean_world_music;
+extern Mix_Music *relic_world_music;
+extern Mix_Music *sand_world_music;
+extern Mix_Music *volcanic_world_music;
+extern Mix_Music *ending_music;
 
-Mix_Chunk *collectDiamondEffect;
-Mix_Chunk *moveEarthEffect;
-Mix_Chunk *moveSpaceEffect;
-Mix_Chunk *rockEffect;
-Mix_Chunk *bonusScoreEffect;
-Mix_Chunk *levelUpEffect;
+extern Mix_Chunk *collectDiamondEffect;
+extern Mix_Chunk *moveEarthEffect;
+extern Mix_Chunk *moveSpaceEffect;
+extern Mix_Chunk *rockEffect;
+extern Mix_Chunk *bonusScoreEffect;
+extern Mix_Chunk *levelUpEffect;
 
 bool SDL_Initialization();
 bool SDL_Load_Texture_Audio_TTF();

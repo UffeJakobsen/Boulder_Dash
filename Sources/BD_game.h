@@ -1,8 +1,9 @@
-#include "BD_basis.h"
-#include "BD_animation.h"
 
 #ifndef BD_game
 #define BD_game
+
+#include "BD_basis.h"
+#include "BD_animation.h"
 
 void Game_Initialization(Game *g);
 void Get_Event(Game *g);
